@@ -6,10 +6,7 @@ if (!isset($_SESSION['myusername'])) {
 
 include ('include/config.php');
 
-foreach ($restrict_users as $r_user) {
-    if ($_SESSION['myusername'] == $r_user) {
-        include ('include/header.php');
-
+if ($_SESSION['permission'] == "limited") {
         echo '<html>
           <div align="left">
     	    <strong>
@@ -20,6 +17,5 @@ foreach ($restrict_users as $r_user) {
     	  </div>
     	  </html>';
         exit;
-    }
 }
 ?>

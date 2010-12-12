@@ -1,12 +1,12 @@
 <?php
 
-// MySQLi connection block
+// MySQL connection block
 // MAKE SURE TO EDIT THIS OR YOUR CONTROL PANEL WILL NOT WORK
-$host = "";
-$username = "";
-$password = "";
-$db_name = "";
-$tbl_name = "";
+$host = "localhost";
+$username = "system_cp";
+$password = "r0mLaboJHJOl5aajbLaR";
+$db_name = "system_cp";
+$tbl_name = "main";
 
 // next three lines connects to your db, and if the connection fails, dies and gives a reason
 $db = new mysqli($host, $username, $password, $db_name);
@@ -23,7 +23,7 @@ if (mysqli_connect_errno()) {
 // make sure that the username is in single quotes (') and
 // each separate element is comma-separated
 
-$restrict_users = array('');
+$restrict_users = array('test-session');
 
 // this next setting is for GLOBAL user restriction.
 // i don't see why you would EVER want to enable this, it COMPLETELY

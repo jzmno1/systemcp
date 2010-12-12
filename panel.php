@@ -112,8 +112,8 @@ if ($_GET['p'] == "processes") {
     echo '</pre>';
     echo '</p></html>';
 } elseif ($_GET['p'] == "power") {
-    include ('restrictions.php');
     include ('include/header.php');
+    include ('restrictions.php');
 
     if ($_GET['type'] == "shutdown") {
         echo '<pre>';
@@ -150,8 +150,9 @@ if ($_GET['p'] == "processes") {
             </table>
             </form>';
 } elseif ($_GET['p'] == "initscripts") {
-    include ('restrictions.php');
     include ('include/header.php');
+    include ('restrictions.php');
+
     $initsclist = shell_exec("ls /etc/init.d");
 
     $initlist = exec("ls /etc/init.d", $initscript_array);
@@ -193,6 +194,7 @@ if ($_GET['p'] == "processes") {
 		  </html>';
 } elseif ($_GET['p'] == "customize") {
     include ('include/header.php');
+    include ('restrictions.php');
 
     echo '<html>
             <form enctype="multipart/form-data" name="custom_image" method="post" action="panel.php?funct=customize_image_processor">
@@ -310,11 +312,9 @@ if ($_GET['p'] == "processes") {
         <strong>Basic System Info</strong>
         <br />
         <pre>';
-        $bash_version = shell_exec('bash --version');
-        $bash_version = preg_replace('/Copyright(.*)/', null, $bash_version);
-        echo "Bash version: " . $bash_version;
-        echo "Kernel version: " . shell_exec("uname -r");
-        echo '
+	echo "Kernel version: " . shell_exec("uname -r");
+	echo "Uptime Stats: " . shell_exec("uptime");
+	echo '
     </pre>
     </table>
     </div>';
@@ -347,7 +347,7 @@ if ($_GET['p'] == "processes") {
     }
     $return = shell_exec("kill -" . $kill_signal . " " . $pid);
     if ($return == NULL) {
-        $return = $kill_signal . "'ED";
+        $return = $kill_signal . " sent to " . $pid;
     } else {
         $return = $return;
     }
