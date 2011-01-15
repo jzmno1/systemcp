@@ -4,7 +4,7 @@
 // MAKE SURE TO EDIT THIS OR YOUR CONTROL PANEL WILL NOT WORK
 $host = "localhost";
 $username = "system_cp";
-$password = "r0mLaboJHJOl5aajbLaR";
+$password = "";
 $db_name = "system_cp";
 $tbl_name = "main";
 
