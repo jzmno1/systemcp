@@ -5,6 +5,13 @@ if (!isset($_SESSION['myusername'])) {
     header("location:index.html");
 }
 
+if (is_dir('./install') == TRUE) {
+    include('include/header.php');
+    echo '<center><strong> Please move or rename the installation directory (install) before using this panel.</strong></center>';
+    session_destroy();
+    die();
+}
+
 if ($_GET['p'] == "processes") {
     include ('include/header.php');
     $ref = $_GET['p'];
@@ -449,6 +456,8 @@ if ($_GET['p'] == "processes") {
             You have been logged out. <a class="medium awesome yellow" href="index.html">Click here to return to the login screen.</a>
           </p>
           </html>';
+} elseif ($_GET['p'] == 'admin') {
+    header('location:admin.php');
 } else {
     header('location:panel.php?p=home');
 }

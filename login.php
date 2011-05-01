@@ -18,11 +18,10 @@ $encrypted_mypassword = md5($mypassword);
 
 // query
 $result = $db->query("SELECT * FROM `$tbl_name` WHERE `username`='$myusername' and `password`='$encrypted_mypassword'");
-$permission = $db->query("SELECT `permission` FROM `$tbl_name` WHERE `username`='$myusername' and `password`='$encrypted_mypassword'");
 
 // this is to setup for user permission checking later on
-$permission = $permission->fetch_assoc();
-$permission = $permission['permission'];
+$permission = $result->fetch_assoc();
+$permission = $permission['permissions'];
 
 // count the rows to make sure login is good
 $count = $result->num_rows;

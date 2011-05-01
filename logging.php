@@ -1,16 +1,19 @@
 <?php
 
 session_start();
+
+date_default_timezone_set('America/Chicago');
+
 if (!isset($_SESSION['myusername'])) {
     header("location:index.html");
 }
 
 if ($_GET['page'] == "view") {
+    $fname = 'logs/' . date('Ymd') . '.log';
     include ('include/header.php');
     include ('restrictions.php');
-    
-    $handle = fopen('logs/' . date('Ymd'), 'c+');
-    $logs = fread($handle, filesize('logs/' . date('Ymd')));
+    $handle = fopen($fname, 'c+');
+    $logs = fread($handle, filesize($fname));
     echo '<html><div align="left"><strong>Log Filename: logs/' . date("Ymd") . '</strong><br /><br />';
     $logs = nl2br($logs);
     $logs = preg_replace('/IP:/', '<strong>IP:</strong>', $logs);
@@ -35,7 +38,9 @@ if ($_GET['page'] == "view") {
     } else {
     	$login_status = $_GET['login_status'];
     }
-    $handle = fopen('logs/' . date('Ymd'), 'a');
+    $fname = 'logs/'. date('Ymd') . '.log';
+    touch($fname);
+    $handle = fopen($fname, 'a');
     $logs_str = "IP: " . $_SERVER['REMOTE_ADDR'] . " || Request URI: " . $_GET['request_uri'] . " || Login Status: " . $login_status . " || Date/Time: " . date('g:i:s a|Y/m/d') . "\n\n";
     fwrite($handle, $logs_str);
     fclose($handle);

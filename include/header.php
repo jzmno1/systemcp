@@ -78,7 +78,7 @@ if ($_GET['error'] == "access_denied") {
         <a href="options.php?page=general" class="medium awesome blue">Preferences</a>
         <br><br>';
     if ($_SESSION['permission'] == "administrator") {
-        echo '<a href="options.php?page=admin" class="medium awesome orange">Administration</a><br><br>';
+        echo '<a href="panel.php?p=admin" class="medium awesome orange">Administration</a><br><br>';
     }
     echo ' <a href="panel.php?funct=logout" class="medium awesome yellow">Logout</a>
         <br><br><div align="right"><a href="" class="medium awesome magenta" id="closeFancy">Close</a></div>

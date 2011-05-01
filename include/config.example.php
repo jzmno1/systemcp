@@ -2,11 +2,11 @@
 
 // MySQL connection block
 // MAKE SURE TO EDIT THIS OR YOUR CONTROL PANEL WILL NOT WORK
-$host = "";
-$username = "";
-$password = "";
-$db_name = "";
-$tbl_name = "";
+$host = '';
+$username = '';
+$password = '';
+$db_name = '';
+$tbl_name = '';
 
 // next three lines connects to your db, and if the connection fails, dies and gives a reason
 $db = new mysqli($host, $username, $password, $db_name);

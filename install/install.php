@@ -46,7 +46,7 @@ if ($_GET['page'] == "config") {
 
         echo '<form name="db_conf" method="post" action="install.php?page=config&act=write">';
         foreach ($database_config as $config_item) {
-            echo '<input name="' . $config_item . '" type="text" id="' . $config_item . '">';
+            echo ''.$config_item.'<input name="' . $config_item . '" type="text" id="' . $config_item . '">';
             echo '<br />';
         }
         echo '<br /><br />';
@@ -98,11 +98,10 @@ if ($_GET['page'] == "config") {
     echo '</form>';
 } else {
 
+    header("location:install.php?page=config");
     echo '<div align="left">
            <strong> Welcome to the installer for SystemCP </strong>
           </div>';
 
-    sleep(5);
-    header("location:install.php?page=config");
 }
 ?>
